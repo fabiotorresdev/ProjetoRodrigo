@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=, initial-scale=1.0">
-  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" type="text/css"  href="/style/style.css">
   <title>Projeto Rodrigo</title>
 </head>
 <body> 
   <header>
     <a href="#" class="logo">Logo</a>
     <nav>
-      <a href="home" style="--clr:#ff4d4d;">Home</a>
+      <a href="home" style="--clr:#ff4d4d;" class="active">Home</a>
       <a href="About" style="--clr:#c56cf0;">About</a>
       <a href="Services" style="--clr:#ffeaa7;">Services</a>
       <a href="Portifilio" style="--clr:#17c0eb;">Portifilio</a>
@@ -22,5 +22,28 @@
   <section id="Services" style="--clr:#ffeaa7">Services</section>
   <section id="Portifilio" style="--clr:#17c0eb">Portifilio</section>
   <section id="Contact" style="--clr:#fd79a8">Contact</section>
+
+
+  <script>
+    let sec = document.querySelectorAll('section');
+    let links = document.querySelectorAll('nav a')
+
+    window.onscroll = () => {
+      sec.forEach(section => {
+        let top = window.scrollY;
+        let offset = section.offsetTop -60;
+        let height = section.offsetHeight;
+        let id = section.getAttribute('id');
+
+        if(top >= offset && top < offset + height) {
+          links.forEach( link => {
+            link.classList.remove('active');
+            document.querySelector('nav a[href* = ' + id + ']').classList.add('active')
+          })
+        }
+    
+      })
+    };
+  </script>
 </body>
 </html>
